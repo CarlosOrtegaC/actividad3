@@ -52,7 +52,7 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const BOOKS: Book[] = [
-    { "id": 1, "title": "Viaje al Norte", "year": 2000, "authorId": 1, "categoryId": 1, price: 15.99, description: "Un viaje épico a través de páramos helados.", image: "https://placehold.co/300x450/2a9d8f/white?text=Viaje+al+Norte" },
+    { "id": 1, "title": "Viaje al Norte", "year": 2000, "authorId": 1, "categoryId": 1, price: 15.99, description: "Un viaje épico a través de páramos helados.", image: "public/images/books/viaje_al_norte.jpg" },
     { "id": 2, "title": "Secretos del Bosque", "year": 2001, "authorId": 2, "categoryId": 2, price: 12.50, description: "¿Qué yace bajo el antiguo dosel?", image: "https://placehold.co/300x450/e9c46a/black?text=Secretos+del+Bosque" },
     { "id": 3, "title": "Océano a Medianoche", "year": 2002, "authorId": 3, "categoryId": 3, price: 18.20, description: "Un misterio en un viaje transatlántico.", image: "https://placehold.co/300x450/264653/white?text=Oceano" },
     { "id": 4, "title": "Perdido en la Ciudad", "year": 2003, "authorId": 4, "categoryId": 4, price: 14.00, description: "Thriller de ciencia ficción urbana.", image: "https://placehold.co/300x450/e76f51/white?text=Perdido" },
