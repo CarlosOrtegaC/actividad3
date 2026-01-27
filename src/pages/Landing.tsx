@@ -12,7 +12,7 @@ export default function Landing() {
             {/* Hero Section */}
             <section className="text-center space-y-4 py-12">
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-primary">
-                    Bienvenido a Nexxus
+                    Bienvenido a Nexus
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                     Tu centro universitario de recursos y espacios de coworking.

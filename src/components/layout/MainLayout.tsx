@@ -29,7 +29,7 @@ export function MainLayout() {
                 <div className="container mx-auto px-4 py-3 flex items-center justify-between">
                     <div className="flex items-center gap-2 font-bold text-xl text-primary">
                         <BookOpen className="h-6 w-6" />
-                        <span>Nexxus</span>
+                        <span>Nexus</span>
                     </div>
 
                     <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -81,7 +81,7 @@ export function MainLayout() {
             <div className="flex flex-1 container mx-auto px-4 py-8 gap-8">
                 {/* Sidebar - Only show for authenticated routes that are NOT the landing/login */}
                 {isAuthenticated && location.pathname !== '/' && (
-                    <aside className="w-64 flex-shrink-0 hidden lg:block space-y-6">
+                    <aside className="w-64 shrink-0 hidden lg:block space-y-6">
                         {isActive('/library') || isActive('/books') ? (
                             <div className="space-y-4">
                                 <h3 className="font-semibold text-lg">Menú Librería</h3>
