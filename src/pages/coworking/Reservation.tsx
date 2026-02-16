@@ -32,7 +32,7 @@ export default function Reservation() {
     if (!space) return <div>Cargando...</div>;
 
     return (
-        <div className="max-w-md mx-auto">
+        <div className="max-w-md mx-auto w-full px-4 sm:px-0">
             <Card>
                 <CardHeader>
                     <CardTitle>Reservar {space.name}</CardTitle>

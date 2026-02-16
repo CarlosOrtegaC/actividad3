@@ -106,7 +106,7 @@ export default function BookList() {
                         No se encontraron libros.
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         {filteredBooks.map((book) => (
                             <Card key={book.id} className="flex flex-col h-full hover:shadow-md transition-shadow overflow-hidden">
                                 <div className="aspect-[2/3] w-full bg-muted">

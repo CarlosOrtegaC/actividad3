@@ -11,10 +11,14 @@ import {
     List
 } from "lucide-react";
 
+import { useState } from "react";
+
 export function MainLayout() {
     const { user, logout, isAuthenticated } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
 
     const handleLogout = () => {
         logout();
@@ -60,23 +64,82 @@ export function MainLayout() {
                     <div className="flex items-center gap-4">
                         {isAuthenticated ? (
                             <>
-                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground">
                                     <User className="h-4 w-4" />
                                     <span className="hidden sm:inline">{user?.name}</span>
                                 </div>
-                                <Button variant="ghost" size="sm" onClick={handleLogout}>
+                                <div className="hidden md:block">
+                                    <Button variant="ghost" size="sm" onClick={handleLogout}>
+                                        <LogOut className="h-4 w-4 mr-2" />
+                                        Salir
+                                    </Button>
+                                </div>
+                            </>
+                        ) : (
+                            <div className="hidden md:block">
+                                <Button asChild variant="default" size="sm">
+                                    <Link to="/login">Acceder</Link>
+                                </Button>
+                            </div>
+                        )}
+                        <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                            <List className="h-6 w-6" />
+                        </Button>
+                    </div>
+                </div>
+
+                {/* Mobile Menu */}
+                {isMobileMenuOpen && (
+                    <div className="md:hidden border-t p-4 space-y-4 bg-background">
+                        <nav className="flex flex-col gap-4">
+                            <Link
+                                to="/"
+                                className={`text-sm font-medium ${location.pathname === '/' ? 'text-primary' : 'text-muted-foreground'}`}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                Inicio
+                            </Link>
+                            {isAuthenticated && (
+                                <>
+                                    <Link
+                                        to="/library/top10"
+                                        className={`text-sm font-medium ${isActive('/library') || isActive('/books') ? 'text-primary' : 'text-muted-foreground'}`}
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        Librería
+                                    </Link>
+                                    <Link
+                                        to="/coworking"
+                                        className={`text-sm font-medium ${isActive('/coworking') ? 'text-primary' : 'text-muted-foreground'}`}
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        Coworking
+                                    </Link>
+                                </>
+                            )}
+                        </nav>
+                        {isAuthenticated ? (
+                            <div className="pt-4 border-t flex flex-col gap-4">
+                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                    <User className="h-4 w-4" />
+                                    <span>{user?.name}</span>
+                                </div>
+                                <Button variant="outline" size="sm" onClick={() => { handleLogout(); setIsMobileMenuOpen(false); }} className="justify-start">
                                     <LogOut className="h-4 w-4 mr-2" />
                                     Salir
                                 </Button>
-                            </>
+                            </div>
                         ) : (
-                            <Button asChild variant="default" size="sm">
-                                <Link to="/login">Acceder</Link>
-                            </Button>
+                            <div className="pt-4 border-t">
+                                <Button asChild variant="default" size="sm" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
+                                    <Link to="/login">Acceder</Link>
+                                </Button>
+                            </div>
                         )}
                     </div>
-                </div>
+                )}
             </header>
+
 
             <div className="flex flex-1 container mx-auto px-4 py-8 gap-8">
                 {/* Sidebar - Only show for authenticated routes that are NOT the landing/login */}
